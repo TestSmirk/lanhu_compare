@@ -5,6 +5,7 @@ import 'package:flutter/services.dart' show PlatformException;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:link_text/link_text.dart';
+import 'package:photo_view/photo_view.dart';
 import 'package:uni_links_desktop/uni_links_desktop.dart';
 import 'package:window_size/window_size.dart';
 
@@ -31,7 +32,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(sliderTheme: SliderThemeData(thumbShape: RoundSliderThumbShape(enabledThumbRadius: 60))
+      theme: ThemeData(
+          backgroundColor: Colors.transparent,
+          sliderTheme: SliderThemeData(thumbShape: RoundSliderThumbShape(enabledThumbRadius: 60))
           // This is the theme of your application.
           //
           // Try running your application with "flutter run". You'll see the
@@ -121,12 +124,11 @@ class _MyHomePageState extends State<MyHomePage> {
               width: double.infinity,
               color: Colors.transparent,
               child: Stack(
+                fit: StackFit.expand,
                 children: [
-                  FittedBox(
-                    child: Opacity(
-                      opacity: opacity,
-                      child: Image.network(_initialLink ?? ""),
-                    ),
+                  Opacity(
+                    opacity: opacity,
+                    child: PhotoView(imageProvider: NetworkImage(_initialLink ?? ""),tightMode: false,),
                   ),
                   Positioned(
                       left: 0,

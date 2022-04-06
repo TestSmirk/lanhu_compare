@@ -30,6 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
   uni_links_desktop:
+  photo_view:
   window_size:
     git:
       url: https://github.com/google/flutter-desktop-embedding.git
